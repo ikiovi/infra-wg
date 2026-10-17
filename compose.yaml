@@ -1,0 +1,21 @@
+services:
+  wireguard:
+    image: lscr.io/linuxserver/wireguard:latest
+    container_name: wireguard
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
+
+    secrets:
+      - wg_private_key
+
+secrets:
+  wg_private_key:
+    file: ./secrets/wg_private_key

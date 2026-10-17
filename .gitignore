@@ -1,0 +1,6 @@
+secrets/*
+config/*
+peers.json
+
+!secrets/.gitkeep
+!config/.gitkeep
